@@ -2,23 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>足迹 on 绵羊的小世界</title>
-    <link>https://CaiMinYang.github.io/blogs/</link>
+    <link>http://example.org/blogs/</link>
     <description>Recent content in 足迹 on 绵羊的小世界</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 31 Oct 2017 22:27:21 -0500</lastBuildDate>
     
-	<atom:link href="https://CaiMinYang.github.io/blogs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://example.org/blogs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>初见</title>
-      <link>https://CaiMinYang.github.io/blogs/%E5%88%9D%E8%A7%81/</link>
+      <title>Linux系统启动过程</title>
+      <link>http://example.org/blogs/linux%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://CaiMinYang.github.io/blogs/%E5%88%9D%E8%A7%81/</guid>
+      <guid>http://example.org/blogs/linux%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/</guid>
+      <description>Linux服务器按下开机键后发生了什么 ​ 为了更好的理解linux，第一步便是总结linux从开机到用户登陆终端期间，服务器的程序流转过程是怎样的。
+那么Linux开机之后发生了什么呢？简要原理总结如下(假设是一台物理服务器):
+1.按电源 2.BIOS开机自检 开机之后，服务器首先进行BIOS自检，执行BIOS所指定的首启动项(相当于硬件的操作者从bios转换至操作系统)在操作系统接管硬件之后，首先读入操作系统的内核文件，即/boot。
+3.运行init初始化进程 进入内核文件会首先启动init初始化进程，执行init进程后，其他的进程才得以启动。这就像你要吃饼干:打开饼干袋就是执行init进程，吃饼干则是执行其他进程。只有打开饼干袋(启动init进程)，才能吃饼干(其他计算机进程)。一般情况下，init文件是指/etc/inittab。
+4.系统初始化 ​ 在我们日常使用的windows操作系统中，开机会默认开启一系列系统进程，即&amp;quot;服务&amp;rdquo;，服务进程一般不直接对外体现作用，而是作为相关应用程序的运行依据。
+在linux系统中，也存在此类作为其他应用程序运行依据的进程，称作守护进程
+init初始化系统过程中的一个重要作用，就是根据linux系统的不同运行级别进行相关守护进程的启动。(运行级别在此不赘述，可自行百度)
+初始化过程中，init进程还可以激活交换分区、加载硬件模块、检查磁盘、启动硬件驱动等
+5.建立终端 此时系统已经完成初始化，相关守护进程已根据运行级别启动完毕。操作系统的基本运行环境已经准备好，linux此时会建立对外的终端入口，以便用户登陆
+6.用户登陆操作系统 用户输入账号密码登陆系统
+至此，linux的开机过程描述完毕。当然，这仅仅是简单的、模块化的描述，抽象掉了大部分底层细节，以供读者对linux初步认识。
+整个流程参考下图:
+![image-20200422114303143](E:\hugo site\cmy\static\img\blogs\linux启动流程.png)</description>
+    </item>
+    
+    <item>
+      <title>初见</title>
+      <link>http://example.org/blogs/%E5%88%9D%E8%A7%81/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/blogs/%E5%88%9D%E8%A7%81/</guid>
       <description>大家好，我是蔡民阳 今天是2020年4月20日，初次建成个人博客，并攥写此文。
-此博客将作为我生活、学习、舞蹈、IT技术和游戏技术分享的平台，若有看官，还请多多指教！
+此博客将作为我记录生活、学习、舞蹈、IT技术和游戏技术分享的平台，若有看官，还请多多指教！
 且从长计议~ </description>
     </item>
     

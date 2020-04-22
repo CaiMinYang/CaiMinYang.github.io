@@ -8,7 +8,7 @@
 	<meta name="description" content="不会搞IT的舞者,不是好玩家">
 	<meta name="author" content="蔡民阳">
 	<meta name="generator" content="Hugo 0.69.0" />
-	<title>初见 &middot; 绵羊的小世界</title>
+	<title>Linux系统启动过程 &middot; 绵羊的小世界</title>
 	<!-- Stylesheets -->
 	
 	<link rel="stylesheet" href="http://example.org/css/main.css"/>
@@ -71,15 +71,31 @@
                     <section id="one">
                         <div class="inner">
                             <header class="major">
-                                <h1>初见</h1>
+                                <h1>Linux系统启动过程</h1>
                             </header>
                             
-                                <span class="image main"><img src="/img/blogs/%e5%88%9d%e8%a7%81.jpg" alt="" /></span>
+                                <span class="image main"><img src="/img/blogs/linux%e5%90%af%e5%8a%a8%e6%b5%81%e7%a8%8b.jpg" alt="" /></span>
                             
-                            <h4 id="大家好我是蔡民阳">大家好，我是蔡民阳</h4>
-<p>今天是2020年4月20日，初次建成个人博客，并攥写此文。</p>
-<p>此博客将作为我记录生活、学习、舞蹈、IT技术和游戏技术分享的平台，若有看官，还请多多指教！</p>
-<h5 id="且从长计议">且从长计议~</h5>
+                            <h1 id="linux服务器按下开机键后发生了什么">Linux服务器按下开机键后发生了什么</h1>
+<p>​    为了更好的理解linux，第一步便是总结linux从开机到用户登陆终端期间，服务器的程序流转过程是怎样的。</p>
+<p>那么Linux开机之后发生了什么呢？简要原理总结如下(假设是一台物理服务器):</p>
+<h2 id="1按电源">1.按电源</h2>
+<h2 id="2bios开机自检">2.BIOS开机自检</h2>
+<p>开机之后，服务器首先进行BIOS自检，执行BIOS所指定的首启动项(相当于硬件的操作者从bios转换至操作系统)在操作系统接管硬件之后，首先读入操作系统的内核文件，即/boot。</p>
+<h2 id="3运行init初始化进程">3.运行init初始化进程</h2>
+<p>进入内核文件会首先启动init初始化进程，执行init进程后，其他的进程才得以启动。这就像你要吃饼干:打开饼干袋就是执行init进程，吃饼干则是执行其他进程。只有打开饼干袋(启动init进程)，才能吃饼干(其他计算机进程)。一般情况下，init文件是指/etc/inittab。</p>
+<h2 id="4系统初始化">4.系统初始化</h2>
+<p>​    在我们日常使用的windows操作系统中，开机会默认开启一系列系统进程，即&quot;服务&rdquo;，服务进程一般不直接对外体现作用，而是作为相关应用程序的运行依据。</p>
+<p>在linux系统中，也存在此类作为其他应用程序运行依据的进程，称作<strong>守护进程</strong></p>
+<p>init初始化系统过程中的一个重要作用，就是根据linux系统的不同<strong>运行级别</strong>进行相关<strong>守护进程</strong>的启动。(运行级别在此不赘述，可自行百度)</p>
+<p>初始化过程中，init进程还可以激活交换分区、加载硬件模块、检查磁盘、启动硬件驱动等</p>
+<h2 id="5建立终端">5.建立终端</h2>
+<p>此时系统已经完成初始化，相关守护进程已根据运行级别启动完毕。操作系统的基本运行环境已经准备好，linux此时会建立对外的终端入口，以便用户登陆</p>
+<h2 id="6用户登陆操作系统">6.用户登陆操作系统</h2>
+<p>用户输入账号密码登陆系统</p>
+<p>至此，linux的开机过程描述完毕。当然，这仅仅是简单的、模块化的描述，抽象掉了大部分底层细节，以供读者对linux初步认识。</p>
+<p>整个流程参考下图:</p>
+<p>![image-20200422114303143](E:\hugo site\cmy\static\img\blogs\linux启动流程.png)</p>
 
                         </div>
                     </section>
